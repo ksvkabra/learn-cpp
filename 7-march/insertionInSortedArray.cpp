@@ -8,4 +8,5 @@ int main()
 
   int number;
   cin>>number;
+
 }
