@@ -2,41 +2,27 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-int trappingWater(int arr[], int n)
-{
+int trap(vector& height) {
+int n=height.size();
+long long temp1[n], temp2[n];
+long long sum=0;
+int res=INT_MIN;
+int ans=INT_MIN;
 
-  int prefixMax[n];
-  int suffixMax[n];
-  prefixMax[0] = arr[0];
-  for (int i = 1; i < n; i++)
-  {
-    prefixMax[i] = max(arr[i], prefixMax[i - 1]);
-  }
-  suffixMax[n - 1] = arr[n - 1];
-  for (int i = n - 2; i >= 0; i--)
-  {
-    suffixMax[i] = max(arr[i], suffixMax[i + 1]);
-  }
-  int answer = 0;
-  for (int i = 0; i < n; i++)
-  {
-    int x = min(prefixMax[i], suffixMax[i]) - arr[i];
-    answer += x;
-  }
-  return answer;
-}
-int main()
-{
-  int n;
-
-  cin >> n;
-
-  int a[n];
-
-  for (int i = 0; i < n; i++)
-  {
-    cin >> a[i];
-  }
-
-  cout << trappingWater(a, n) << endl;
+    for(int i=0; i<n; i++)
+    {
+        res=max(res,height[i]); //store max from left
+        temp1[i]=res;
+    }
+    for(int i=n-1; i>=0; i--)
+   {
+       ans=max(height[i],ans); // store max from right
+       temp2[i]=ans;
+   }
+    for(int i=0; i<n; i++)
+    {
+        long long x= min(temp1[i], temp2[i]);
+        sum=sum+x-height[i];
+    }
+    return sum;
 }
