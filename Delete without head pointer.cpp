@@ -23,7 +23,7 @@ Node *findNode(Node* head, int search_for)
     return current;
 }
 
-
+// insert node here
 void insert()
 {
     int n,i,value;
@@ -48,7 +48,7 @@ void insert()
     }
 }
 
-
+// print list here
 void printList(Node *node)
 {
     while (node != NULL)
@@ -80,8 +80,6 @@ class Solution
 
 int main(void)
 {
-    
-
     int t,k,n,value;
     
     scanf("%d",&t);
